@@ -1,4 +1,4 @@
-REQUIREMENTS
+**REQUIREMENTS**
 
 The user can choose the number of questions (12 - 39).\
 The user can choose the calculation method (*, /, %).\
