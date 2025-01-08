@@ -1,4 +1,5 @@
 REQUIREMENTS
+
 The user can choose the number of questions (12 - 39).
 The user can choose the calculation method (*, /, %).
 The user can choose the table (2 - 12) or divisor (2 - 5).
