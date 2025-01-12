@@ -54,12 +54,12 @@ def get_max_repeats(number_of_questions):
     else:
         return 1
 
-is_eaten_by_zombies = False
+eaten_by_zombies = False
 continue_playing = True
 
 while continue_playing:
     #If true, the player has lost the previous round, and the previous conditions are repeated.
-    if not is_eaten_by_zombies:
+    if not eaten_by_zombies:
         print("*********************************" +
           "\nZombie House 2000" +
           "\n*********************************")
@@ -89,6 +89,7 @@ while continue_playing:
     for i in range(number_of_questions):
         print(f"Question {i + 1} of {number_of_questions}:", end=" ")
 
+        #This is the factor or dividend.
         parameter = get_parameter(max_repeats, previous_numbers)
         previous_numbers.append(parameter)
 
@@ -98,7 +99,7 @@ while continue_playing:
 
             if answer !=  table * parameter:
                 print("No! Because of your bad math the zombies got you.")
-                is_eaten_by_zombies = True
+                eaten_by_zombies = True
 
         #Integer division
         elif method == "/":
@@ -106,7 +107,7 @@ while continue_playing:
 
             if answer != parameter // table:
                 print("No! Because of your bad math the zombies got you.")
-                is_eaten_by_zombies = True
+                eaten_by_zombies = True
 
         #Modulus
         elif method == "%":
@@ -114,24 +115,24 @@ while continue_playing:
 
             if answer != parameter % table:
                 print("No! Because of your bad math the zombies got you.")
-                is_eaten_by_zombies = True
+                eaten_by_zombies = True
 
 
         #If the player survived the math test, they get to choose a door.
-        if not is_eaten_by_zombies and remaining_doors > 1:
+        if not eaten_by_zombies and remaining_doors > 1:
             door_with_zombie = random.randint(1, remaining_doors)
             user_door = input_valid_int(f"You see {remaining_doors} doors, which one do you choose? ",
              f"Please enter a number between 1 and {remaining_doors}.", 1, remaining_doors)
 
             if door_with_zombie == user_door:
                 print("Zombies! You're dead.")
-                is_eaten_by_zombies = True
+                eaten_by_zombies = True
             else:
                 print("Whew! No zombies.", end="\n\n") 
                 remaining_doors -= 1 
 
         #If the player has gotten eaten by zombies, the round ends.
-        if is_eaten_by_zombies:
+        if eaten_by_zombies:
             sleep(2)
             clear_screen()
 
@@ -143,10 +144,7 @@ while continue_playing:
             break
 
     #If the player survived the game.
-    if not is_eaten_by_zombies:
+    if not eaten_by_zombies:
         print("You have survived the zombie house!")
         sleep(2)
         clear_screen()
-        
-    
-
