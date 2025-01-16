@@ -92,15 +92,10 @@ while continue_playing:
             user_answer = input_valid_int(f"{table} * {parameter} = ", "Please enter a number. ")
             correct_answer = run_math("*", table, parameter)
                 
-        # Integer division
-        elif method == "//":
-            user_answer = input_valid_int(f"{parameter} // {table} = ", "Please enter a number. ")
-            correct_answer = run_math("//", table, parameter)
-
-        # Modulus
-        elif method == "%":
-            user_answer = input_valid_int(f"{parameter} % {table} = ", "Please enter a number. ")
-            correct_answer = run_math("%", table, parameter)
+        # Integer division & modulus
+        else:
+            user_answer = input_valid_int(f"{parameter} {method} {table} = ", "Please enter a number. ")
+            correct_answer = run_math(method, table, parameter)
 
         if user_answer != correct_answer:
             print("No! Because of your bad math the zombies got you.")
@@ -110,7 +105,6 @@ while continue_playing:
         # If the player survived the math test, they get to choose a door.
         if not eaten_by_zombies and remaining_doors > 1:
             door_with_zombie = random.randint(1, remaining_doors)
-            print(door_with_zombie)
             user_door = input_valid_int(f"You see {remaining_doors} doors, which one do you choose? ",
              f"Please enter a number between 1 and {remaining_doors}.", 1, remaining_doors)
 
